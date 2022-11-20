@@ -1,0 +1,123 @@
+﻿<ui:UiWindow
+    x:Class="TextEmotionClassifier.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:local="clr-namespace:TextEmotionClassifier"
+    mc:Ignorable="d"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    Height="450" Width="800"
+    Title="Text emotion classifier" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ui:TitleBar
+            Title="Розпізнавання емоційної забарвленості тексту"
+            Grid.Row="0"
+            Icon="pack://application:,,,/Assets/applicationIcon-256.png">
+            <ui:TitleBar.Header>
+                <StackPanel
+                    Margin="0,0,12,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <ui:Button
+                        Appearance="Secondary"
+                        Content="Тема"
+                        Icon="DarkTheme20"
+                        Click="ThemeButton_Click" />
+                </StackPanel>
+            </ui:TitleBar.Header>
+        </ui:TitleBar>
+
+        <Border
+            Grid.Row="1"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="8,8,0,0">
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock 
+                    Grid.Row="0"
+                    Margin="10,5,0,2"
+                    Text="Введіть текст для розпізнавання (англійською)" 
+                    HorizontalAlignment="Left"/>
+
+                <ui:TextBox 
+                    x:Name="TextForRecognition"
+                    Grid.Row="1" 
+                    AcceptsReturn="True"
+                    VerticalAlignment="Stretch"
+                    Margin="5,5,5,5"/>
+                
+                <ui:Button
+                    Grid.Row="2"
+                    Appearance="Primary"
+                    Icon="ClipboardTask24"
+                    HorizontalAlignment="Center"
+                    Content="Підтвердити"
+                    Click="AcceptButton_Click"/>
+
+                <Border
+                    Grid.Row="3"
+                    Margin="0,5,0,0"
+                    Background="{DynamicResource ControlFillColorDefaultBrush}"
+                    CornerRadius="8,8,0,0">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="210"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Text="Результат розпізнавання"
+                            VerticalAlignment="Center"/>
+                        
+                        <TextBox
+                            x:Name="RecognitionResult"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="5,5,7,2"
+                            HorizontalAlignment="Stretch"
+                            IsReadOnly="True"/>
+
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Text="Усі результати розпізнавання"
+                            VerticalAlignment="Center"/>
+                        
+                        <TextBox
+                            x:Name="RecognitionResults"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="5,5,7,5"
+                            HorizontalAlignment="Stretch"
+                            IsReadOnly="True"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</ui:UiWindow>
